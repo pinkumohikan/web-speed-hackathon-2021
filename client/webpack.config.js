@@ -12,6 +12,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 /** @type {import('webpack').Configuration} */
 const config = {
   devServer: {
+    http2: true,
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 8080,

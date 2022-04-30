@@ -2,10 +2,11 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
+const PUBLIC_PATH = path.resolve(__dirname, '../public');
+const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
@@ -17,6 +18,7 @@ const config = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    static: [PUBLIC_PATH, UPLOAD_PATH],
   },
   devtool: 'inline-source-map',
   entry: {
@@ -73,11 +75,6 @@ const config = {
     new HtmlWebpackPlugin({
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
-    }),
-    new CopyPlugin({
-      patterns: [
-        "../public/",
-      ]
     }),
   ],
   resolve: {

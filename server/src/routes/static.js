@@ -9,25 +9,10 @@ const router = Router();
 // SPA 対応のため、ファイルが存在しないときに index.html を返す
 router.use(history());
 
-router.use(
-  serveStatic(UPLOAD_PATH, {
-    etag: false,
-    lastModified: false,
-  }),
-);
+router.use(serveStatic(UPLOAD_PATH));
 
-router.use(
-  serveStatic(PUBLIC_PATH, {
-    etag: false,
-    lastModified: false,
-  }),
-);
+router.use(serveStatic(PUBLIC_PATH));
 
-router.use(
-  serveStatic(CLIENT_DIST_PATH, {
-    etag: false,
-    lastModified: false,
-  }),
-);
+router.use(serveStatic(CLIENT_DIST_PATH));
 
 export { router as staticRouter };

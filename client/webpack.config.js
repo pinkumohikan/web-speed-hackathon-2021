@@ -53,6 +53,9 @@ const config = {
     filename: 'scripts/[name].js',
     path: DIST_PATH,
   },
+  optimization: {
+    minimize: true,
+  },
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
